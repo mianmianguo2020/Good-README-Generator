@@ -39,7 +39,7 @@ inquirer
                     // console.log(result);
                     const selectedRepo = result.repo
                     // console.log(selectedRepo);
-                    console.log(res.data);
+                    // console.log(res.data);
                     
                     const repoSelectedInfo = res.data.filter(repo => {
                         return repo.name == selectedRepo
@@ -56,7 +56,7 @@ inquirer
                     }
                     
                     const header = createMarkdown(allInfo);
-                    // fs.writeFileSync("ReadMe.md", JSON.stringify(allInfo,null,2))
+                    fs.writeFileSync("ReadMe.md", JSON.stringify(allInfo,null,2))
                     fs.writeFileSync("ReadMe.md", header)
                     console.log("sucess!")
 
@@ -70,5 +70,10 @@ inquirer
 const createMarkdown = (Info)=> {
 
 const header = "#" + Info.name
-return header
+const imageDisplay = "![Personel](" + Info.image + ")"
+const repoLinkDisplay = "[GitHub](" + Info.repoLink + ")"
+const descrDisplay = "#" + Info.descr
+const licenseDisplay = "#" + Info.license
+
+return header+'\n'+imageDisplay+'\n'+repoLinkDisplay+'\n'+descrDisplay+'\n'+licenseDisplay
 }
