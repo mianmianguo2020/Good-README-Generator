@@ -16,7 +16,7 @@ inquirer
         const URL = "https://api.github.com/users/" + userUsername + "/repos?per_page=100"
         // console.log(`${result.username}`,`${result.username1}`,`${result.username3}`)
 
-        axios.get(URL).then(res => {
+        axios.get(URL, {auth: {username: 'mianmianguo2020',password: process.env.PERSONALACCESSTOKEN}}).then(res => {
             // const repoName = res.data.name;
             // console.log(res.data)
             // console.log(res.data.name)
@@ -37,42 +37,38 @@ inquirer
                 )
                 .then(result => {
                     // console.log(result);
-                    const selectedRepo = result.repo 
+                    const selectedRepo = result.repo
                     // console.log(selectedRepo);
+                    console.log(res.data);
                     
-                    const repoSelectedInfo = res.data.filter(repo=>{
-                        return repo.name==selectedRepo
-                     })
+                    const repoSelectedInfo = res.data.filter(repo => {
+                        return repo.name == selectedRepo
+                    })
+                    console.log(repoSelectedInfo);
 
-                     const allInfo = {
-                        name: repoSelectedInfo.name,
-                        image: repoSelectedInfo.owner.avatar_url,
-                        repoLink:repoSelectedInfo.html_url,
-                        descr:repoSelectedInfo.description,
-                        license:repoSelectedInfo.license
-                     }
-                     
-                    fs.writeFileSync("ReadMe.md",allInfo)
+
+                    const allInfo = {
+                        name: repoSelectedInfo[0].name,
+                        image: repoSelectedInfo[0].owner.avatar_url,
+                        repoLink: repoSelectedInfo[0].html_url,
+                        descr: repoSelectedInfo[0].description,
+                        license: repoSelectedInfo[0].license
+                    }
+                    
+                    createMarkdown(allInfo)
+                    // fs.writeFileSync("ReadMe.md", JSON.stringify(allInfo,null,2))
+                    fs.writeFileSync("ReadMe.md", header)
                     console.log("sucess!")
-                    
-
-                     
-                   
-                    
-
-
-
-
 
                 })
         })
-        .error(err=>{console.log("Get Request Errors = =!!")})
-
+            .catch(err => { console.log("Get Request Errors: " + err) })
 
     });
 
 
+createMarkdown (Info)=> {
 
-
-
-
+const header = "# This text will be italic" + Info.name
+return header
+}
