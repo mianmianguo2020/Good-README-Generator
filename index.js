@@ -57,7 +57,6 @@ inquirer
             const URL2 = "https://api.github.com/users/" + userUsername
             axios.get(URL2, { auth: { username: 'mianmianguo2020', password: process.env.PERSONALACCESSTOKEN } })
                 .then(response => {
-                    console.log(response.data)
 
                     inquirer
                         .prompt(questionList2)
@@ -67,7 +66,7 @@ inquirer
                             const repoSelectedInfo = res.data.filter(repo => {
                                 return repo.name == selectedRepo
                             })
-                            // console.log(repoSelectedInfo);
+           
 
                             let Author = result.Author 
 
@@ -120,7 +119,7 @@ const createMarkdown = (Info) => {
     const array = [];
     array.push("## Project-Title:")
     array.push(Info.name)
-    
+
     array.push("## Installation:")
     array.push("\`\`\` " + Info.Installation + "\`\`\` ")    
 
