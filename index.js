@@ -67,8 +67,8 @@ inquirer
     });
 
 
-createMarkdown (Info)=> {
+const createMarkdown = (Info)=> {
 
-const header = "# This text will be italic" + Info.name
+const header = "#" + Info.name
 return header
 }
