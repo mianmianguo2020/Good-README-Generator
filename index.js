@@ -55,7 +55,7 @@ inquirer
                         license: repoSelectedInfo[0].license
                     }
                     
-                    createMarkdown(allInfo)
+                    const header = createMarkdown(allInfo);
                     // fs.writeFileSync("ReadMe.md", JSON.stringify(allInfo,null,2))
                     fs.writeFileSync("ReadMe.md", header)
                     console.log("sucess!")
