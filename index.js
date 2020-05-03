@@ -3,11 +3,11 @@ const axios = require("axios");
 const inquirer = require("inquirer");
 
 
-const questionsList = [
-    { message: "Enter your GitHub username", name: "username" },
-    // { message: "", name: "username1" },
-    // { message: "question3", name: "username3" },
-]
+// const questionsList = [
+//     { message: "Enter your GitHub username", name: "username" },
+//     // { message: "", name: "username1" },
+//     // { message: "question3", name: "username3" },
+// ]
 
 
 inquirer
@@ -16,7 +16,7 @@ inquirer
         const URL = "https://api.github.com/users/" + userUsername + "/repos?per_page=100"
 
 
-        axios.get(URL, {auth: {username: 'mianmianguo2020',password: process.env.PERSONALACCESSTOKEN}}).then(res => {
+        axios.get(URL, { auth: { username: 'mianmianguo2020', password: process.env.PERSONALACCESSTOKEN } }).then(res => {
             const repoNameList = [];
             for (let repo of res.data) {
                 repoNameList.push(repo.name);
@@ -33,11 +33,7 @@ inquirer
                     },
                 )
                 .then(result => {
-                    // console.log(result);
                     const selectedRepo = result.repo
-                    // console.log(selectedRepo);
-                    // console.log(res.data);
-                    
                     const repoSelectedInfo = res.data.filter(repo => {
                         return repo.name == selectedRepo
                     })
@@ -51,9 +47,9 @@ inquirer
                         descr: repoSelectedInfo[0].description,
                         license: repoSelectedInfo[0].license
                     }
-                    
+
                     const header = createMarkdown(allInfo);
-                    fs.writeFileSync("ReadMe.md", JSON.stringify(allInfo,null,2))
+                    fs.writeFileSync("ReadMe.md", JSON.stringify(allInfo, null, 2))
                     fs.writeFileSync("ReadMe.md", header)
                     console.log("sucess!")
 
@@ -64,19 +60,19 @@ inquirer
     });
 
 
-const createMarkdown = (Info)=> {
-const array = [];
-array.push("## " + Info.name)
-array.push("![Personel](" + Info.image + ")")
-array.push("[GitHub](" + Info.repoLink + ")")
-array.push("* " + Info.descr)
+const createMarkdown = (Info) => {
+    const array = [];
+    array.push("## " + Info.name)
+    array.push("![Personel](" + Info.image + ")")
+    array.push("[GitHub](" + Info.repoLink + ")")
+    array.push("* " + Info.descr)
 
-if (Info.license!= null){
-array.push("# " + Info.license)    
-}else{
-array.push("# This project is licensed under the MIT License")     
-}
+    if (Info.license != null) {
+        array.push("# " + Info.license)
+    } else {
+        array.push("# This project is licensed under the XXX License")
+    }
 
 
-return array.join("\n\n")
+    return array.join("\n\n")
 }
