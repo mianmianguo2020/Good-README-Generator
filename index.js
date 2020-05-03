@@ -69,10 +69,10 @@ inquirer
 
 const createMarkdown = (Info)=> {
 
-const header = "#" + Info.name
+const header = "##" + Info.name
 const imageDisplay = "![Personel](" + Info.image + ")"
 const repoLinkDisplay = "[GitHub](" + Info.repoLink + ")"
-const descrDisplay = "#" + Info.descr
+const descrDisplay = "*" + Info.descr
 const licenseDisplay = "#" + Info.license
 
 return header+'\n'+'\n'+imageDisplay+'\n'+'\n'+repoLinkDisplay+'\n'+'\n'+descrDisplay+'\n'+'\n'+licenseDisplay
