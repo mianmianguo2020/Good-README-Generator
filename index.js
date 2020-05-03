@@ -3,11 +3,11 @@ const axios = require("axios");
 const inquirer = require("inquirer");
 
 
-// const questionsList = [
-//     { message: "Enter your GitHub username", name: "username" },
-//     // { message: "", name: "username1" },
-//     // { message: "question3", name: "username3" },
-// ]
+const questionsList = [
+    { message: "Enter your GitHub username", name: "username" },
+    // { message: "", name: "username1" },
+    // { message: "question3", name: "username3" },
+]
 
 
 inquirer
@@ -49,7 +49,6 @@ inquirer
                     }
 
                     const header = createMarkdown(allInfo);
-                    fs.writeFileSync("ReadMe.md", JSON.stringify(allInfo, null, 2))
                     fs.writeFileSync("ReadMe.md", header)
                     console.log("sucess!")
 
