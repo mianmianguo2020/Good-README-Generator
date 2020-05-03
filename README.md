@@ -1,6 +1,6 @@
 ## Project-Title:
 
-Portfolio
+Good-README-Generator
 
 ## Installation:
 
@@ -8,7 +8,7 @@ Portfolio
 
 ## Author:
 
-mianmianguo
+Mianmianguo
 
 My name is Christy. Currently enrolled in Georgia Tech Coding Boot Camp.
 Skill: Browser Based Technologies (HTML, CSS, JavaScript, jQuery, Bootstrap)
@@ -27,16 +27,16 @@ Skill: Browser Based Technologies (HTML, CSS, JavaScript, jQuery, Bootstrap)
 
 ## Usage:
 
-for homework
+Good-README-Generator
 
-## License
+## License:
 
 License information is not available.
 
-## Contributors
+## Contributors:
 
-mianmian
+mianmianguo
 
-## Questions
+## Questions:
 
-if you have question please contact mianmianguoguo
+if you have question please contact mianmianguo2020@gmail.com
