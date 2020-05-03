@@ -6,4 +6,4 @@
 
 * ChristyG_Professional_Materials
 
-# null
+# This project is licensed under the MIT License

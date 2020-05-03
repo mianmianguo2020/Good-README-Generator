@@ -14,17 +14,14 @@ inquirer
     .prompt(questionsList).then(result => {
         const userUsername = result.username
         const URL = "https://api.github.com/users/" + userUsername + "/repos?per_page=100"
-        // console.log(`${result.username}`,`${result.username1}`,`${result.username3}`)
+
 
         axios.get(URL, {auth: {username: 'mianmianguo2020',password: process.env.PERSONALACCESSTOKEN}}).then(res => {
-            // const repoName = res.data.name;
-            // console.log(res.data)
-            // console.log(res.data.name)
             const repoNameList = [];
             for (let repo of res.data) {
-                repoNameList.push(repo.name);//just push the repo name 
+                repoNameList.push(repo.name);
             }
-            // console.log(repoList)
+
 
             inquirer
                 .prompt(
@@ -68,12 +65,18 @@ inquirer
 
 
 const createMarkdown = (Info)=> {
+const array = [];
+array.push("## " + Info.name)
+array.push("![Personel](" + Info.image + ")")
+array.push("[GitHub](" + Info.repoLink + ")")
+array.push("* " + Info.descr)
 
-const header = "##" + Info.name
-const imageDisplay = "![Personel](" + Info.image + ")"
-const repoLinkDisplay = "[GitHub](" + Info.repoLink + ")"
-const descrDisplay = "*" + Info.descr
-const licenseDisplay = "#" + Info.license
+if (Info.license!= null){
+array.push("# " + Info.license)    
+}else{
+array.push("# This project is licensed under the MIT License")     
+}
 
-return header+'\n'+'\n'+imageDisplay+'\n'+'\n'+repoLinkDisplay+'\n'+'\n'+descrDisplay+'\n'+'\n'+licenseDisplay
+
+return array.join("\n\n")
 }
