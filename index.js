@@ -75,5 +75,5 @@ const repoLinkDisplay = "[GitHub](" + Info.repoLink + ")"
 const descrDisplay = "#" + Info.descr
 const licenseDisplay = "#" + Info.license
 
-return header+'\n'+imageDisplay+'\n'+repoLinkDisplay+'\n'+descrDisplay+'\n'+licenseDisplay
+return header+'\n'+'\n'+imageDisplay+'\n'+'\n'+repoLinkDisplay+'\n'+'\n'+descrDisplay+'\n'+'\n'+licenseDisplay
 }
