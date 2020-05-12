@@ -2,6 +2,8 @@
 
 Good-README-Generator
 
+![Image of Team-gif](https://github.com/mianmianguo2020/Good-README-Generator/blob/master/project.gif)
+
 ## Installation:
 
 ``` npm``` 
